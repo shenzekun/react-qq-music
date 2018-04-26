@@ -1,0 +1,13 @@
+{
+  "globalDependencies": {
+    "axios": "registry:dt/axios#0.9.1+20161016142654",
+    "immutable": "registry:dt/immutable#3.8.1+20161028131303",
+    "jest": "registry:dt/jest#19.2.0+20170312200138",
+    "object-assign": "registry:dt/object-assign#4.0.1+20161119044246",
+    "react-router-dom": "registry:dt/react-router-dom#4.0.0+20170323201651",
+    "redux": "registry:dt/redux#3.5.2+20160703092728",
+    "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921",
+    "webpack-dev-server": "registry:dt/webpack-dev-server#1.12.1+20170117213337",
+    "whatwg-fetch": "registry:dt/whatwg-fetch#0.0.0+20161004182750"
+  }
+}
