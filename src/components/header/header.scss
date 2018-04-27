@@ -33,6 +33,9 @@
             color: $nav-item-color;
             height: $nav-item-height;
             line-height: $nav-item-height;
+            & a {
+                color: $nav-item-color;
+            }
             & .active {
                 color: $nav-item-active;
                 &:after {

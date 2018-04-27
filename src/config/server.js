@@ -26,9 +26,11 @@ export default class Server {
                 timeout: 30000,
                 params: null,
                 data: null,
-                headers: null,
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
                 baseURL: baseUrl,
-                withCredentials: true, //是否携带cookies发起请求
+                withCredentials: false, //是否携带cookies发起请求
                 validateStatus: function(status) {
                     return status >= 200 && status < 300; // default
                 },

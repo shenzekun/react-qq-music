@@ -1,0 +1,12 @@
+@import '../../../node_modules/swiper/dist/css/swiper.css';
+.swiper-slide img {
+    height: 100%;
+    width: 100%;
+}
+.swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+}
+.swiper-pagination-bullet-active {
+  background: white;
+}

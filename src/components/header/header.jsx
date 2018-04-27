@@ -35,7 +35,7 @@ class Header extends Component {
                         {this.state.navConfig.map(item => {
                             return (
                                 <li className="nav-item" key={item.key}>
-                                    <NavLink to={item.href}>{item.name}</NavLink>
+                                    <NavLink to={item.href} exact >{item.name}</NavLink>
                                 </li>
                             );
                         })}

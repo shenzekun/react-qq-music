@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import route from './route/index';
+import route from './route/';
 import registerServiceWorker from './registerServiceWorker';
 import { AppContainer } from 'react-hot-loader';
-import './style/reset.scss';
+import FastClick from 'fastclick';
+import './index.scss';
+
+FastClick.attach(document.body);
 
 const render = Component => {
     ReactDOM.render(
@@ -20,7 +22,6 @@ render(route);
 if (module.hot) {
     module.hot.accept('./route/', () => {
         render(route);
-        render(require('./route/'));
     });
 }
 registerServiceWorker();

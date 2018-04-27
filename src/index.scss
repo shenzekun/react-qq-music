@@ -1,0 +1,8 @@
+@import './style/_var';
+@import './style/reset.scss';
+body {
+    background: $body-background;
+}
+.noscroll {
+    overflow: hidden;
+}
