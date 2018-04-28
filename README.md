@@ -18,13 +18,13 @@
 打开终端 ，输入：
 
 ```bash
-git clone git@github.com:shenzekun/vue-qq-music.git
+git clone git@github.com:shenzekun/react-qq-music.git
 ```
 
 切换到克隆下来的文件夹：
 
 ```bash
-cd vue-qq-music
+cd react-qq-music
 ```
 
 然后输入：
@@ -39,7 +39,7 @@ yarn
 npm run dev
 ```
 
-最后在浏览器中打开 http://localhost:8080/
+最后在浏览器中打开 http://localhost:3000/
 
 ## 项目结构
 
