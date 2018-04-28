@@ -82,7 +82,7 @@ class API extends Server {
         try {
             let result = await this.axios('get', lyricsUrl(songid));
             console.log(result);
-            return result.data;
+            return result;
         } catch (err) {
             throw err;
         }

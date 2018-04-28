@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Header from '../../components/header/header';
 import './search.scss';
 import { connect } from 'react-redux';
-import { getHotList } from '../../store/search/action';
+import { getHotList, showPlayer, getSong } from '../../store/search/action';
 import API from '../../config/api';
-import { trim,htmlDecode } from '../../utils/utils';
+import { trim, htmlDecode } from '../../utils/utils';
+import Player from '../player/player';
 
 class Search extends Component {
     static propTypes = {
@@ -148,7 +149,7 @@ class Search extends Component {
             let history = [];
             // this.history = [];
             localStorage.setItem('SET_HISTORY_KEY', history);
-            this.setState({history: history})
+            this.setState({ history: history });
         }
         //如果匹配到了单条记录的删除按钮
         if (e.target.matches('.icon.icon-close')) {
@@ -156,7 +157,7 @@ class Search extends Component {
             let index = history.indexOf(e.target.previousElementSibling.innerHTML);
             history.splice(index, 1);
             localStorage.setItem('SET_HISTORY_KEY', history);
-            this.setState({history: history});
+            this.setState({ history: history });
         }
         //如果点到了热门搜索的关键词或者点到了搜索记录的歌
         if (e.target.matches('.tag-keyword') || e.target.matches('.record-con')) {
@@ -164,22 +165,25 @@ class Search extends Component {
             // this.isShowCancel = true;
             // this.isShowHistory = false;
             // this.isShowSearchResults = true;
-            this.setState({
-                keyword: trim(e.target.innerHTML),
-                isShowDelete: true,
-                isShowCancel: true,
-                isShowHistory: false,
-                isShowSearchResults: true
-            },() => {
-                this.addHistory(this.state.keyword);
-                this.search(this.state.keyword);
-            });
+            this.setState(
+                {
+                    keyword: trim(e.target.innerHTML),
+                    isShowDelete: true,
+                    isShowCancel: true,
+                    isShowHistory: false,
+                    isShowSearchResults: true
+                },
+                () => {
+                    this.addHistory(this.state.keyword);
+                    this.search(this.state.keyword);
+                }
+            );
         }
     };
 
     componentWillUnmount() {
-        this.setState = (state,callback)=>{
-          return;
+        this.setState = (state, callback) => {
+            return;
         };
         window.removeEventListener('scroll', this.onScroll.bind(this));
     }
@@ -207,7 +211,7 @@ class Search extends Component {
             // this.searchResult = res.song.list;
         }
         // this.isLoad = res.message !== 'no results';
-        this.setState({isLoad: res.message !== 'no results'})
+        this.setState({ isLoad: res.message !== 'no results' });
         this.accomplish();
     }
 
@@ -236,6 +240,13 @@ class Search extends Component {
             return window.removeEventListener('scroll', this.onScroll.bind(this));
         }
     }
+
+    // 显示 player 的信息
+    showPlayerDetail = list => {
+        console.log(list);
+        this.props.showPlayer();
+        this.props.getSong({ ...list });
+    };
 
     render() {
         return (
@@ -283,9 +294,15 @@ class Search extends Component {
                                 <div className="song-list">
                                     {this.state.searchResult.map(list => {
                                         return (
-                                            <div className="song-item" key={list.songid}>
+                                            <div
+                                                className="song-item"
+                                                key={list.songid}
+                                                onClick={this.showPlayerDetail.bind(this, list)}
+                                            >
                                                 <i className="icon icon-music" />
-                                                <div className="song-name">{htmlDecode(list.songname)}</div>
+                                                <div className="song-name">
+                                                    {htmlDecode(list.songname)}
+                                                </div>
                                                 <div className="song-artist">
                                                     {list.singer.map((artist, index) => {
                                                         return (
@@ -340,6 +357,7 @@ class Search extends Component {
                             </div>
                         ) : null}
                     </div>
+                    {this.props.isShowPlayer ? <Player /> : null}
                 </div>
             </div>
         );
@@ -348,9 +366,12 @@ class Search extends Component {
 
 export default connect(
     state => ({
-        hotkeys: state.getData.hotkeys
+        hotkeys: state.getData.hotkeys,
+        isShowPlayer: state.getData.isShowPlayer
     }),
     {
-        getHotList
+        getHotList,
+        showPlayer,
+        getSong
     }
 )(Search);

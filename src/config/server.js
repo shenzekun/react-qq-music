@@ -27,6 +27,8 @@ export default class Server {
                 params: null,
                 data: null,
                 headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
                 },
                 baseURL: baseUrl,
