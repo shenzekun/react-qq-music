@@ -6,7 +6,7 @@ import Header from '../../components/header/header';
 import Loading from '../../components/loading/loading';
 import API from '../../config/api';
 import { is, fromJS } from 'immutable';
-import {dealNum} from '../../utils/utils';
+import { dealNum } from '../../utils/utils';
 
 class Rank extends Component {
     constructor(props) {
@@ -22,6 +22,11 @@ class Rank extends Component {
     }
     componentDidMount() {
         this.getRankList();
+    }
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
     }
     shouldComponentUpdate(nextProps, nextState) {
         return (

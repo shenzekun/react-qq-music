@@ -104,6 +104,7 @@
   "devDependencies": {
     "node-sass": "^4.9.0",
     "react-hot-loader": "^4.1.2",
+    "redux-devtools-extension": "^2.13.2",
     "sass-loader": "^7.0.1"
   }
 }

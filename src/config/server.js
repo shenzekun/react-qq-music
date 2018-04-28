@@ -23,7 +23,7 @@ export default class Server {
             _option = {
                 method,
                 url,
-                timeout: 30000,
+                timeout: 40000,
                 params: null,
                 data: null,
                 headers: {

@@ -29,6 +29,11 @@ class Recommmend extends Component {
     componentDidMount() {
         this.getRecommendList();
     }
+    componentWillUnmount() {
+        this.setState = (state, callback) => {
+            return;
+        };
+    }
     shouldComponentUpdate(nextProps, nextState) {
         return (
             !is(fromJS(this.props), fromJS(nextProps)) || !is(fromJS(this.state), fromJS(nextState))
@@ -55,6 +60,7 @@ class Recommmend extends Component {
                                                         placeholder={
                                                             <img
                                                                 src={require('../../assets/default_pic.jpg')}
+                                                                alt="默认图片"
                                                             />
                                                         }
                                                     >
@@ -85,10 +91,11 @@ class Recommmend extends Component {
                                                             placeholder={
                                                                 <img
                                                                     src={require('../../assets/default_pic.jpg')}
+                                                                    alt="默认图片"
                                                                 />
                                                             }
                                                         >
-                                                            <img src={list.picUrl} />
+                                                            <img src={list.picUrl} alt="图片" />
                                                         </Lazyload>
                                                         <span className="listen_count">
                                                             <span className="icon icon_listen" />
