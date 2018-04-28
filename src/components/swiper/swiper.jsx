@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Swiper from 'swiper';
+import Swiper from '../../../node_modules/swiper/dist/js/swiper.js';
 import './swiper.scss';
 import { is, fromJS } from 'immutable';
 

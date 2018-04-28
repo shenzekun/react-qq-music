@@ -64,7 +64,7 @@ class API extends Server {
             if (result.message === 'query error') {
                 throw result.message
             } else {
-                console.log(result);
+                // console.log(result);
                 return result.data;
             }
         } catch (err) {
@@ -81,7 +81,7 @@ class API extends Server {
     async getLyrics(songid) {
         try {
             let result = await this.axios('get', lyricsUrl(songid));
-            console.log(result);
+            // console.log(result);
             return result;
         } catch (err) {
             throw err;

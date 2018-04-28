@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import './rank.scss';
 import LazyLoad from 'react-lazyload';
 import Header from '../../components/header/header';
